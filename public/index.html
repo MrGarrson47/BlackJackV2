@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>BlackJackV2</title>
+</head>
+<body>
+    <div class="gameWindow">
+        <header class="d-flex bg-primary p-3">
+            <div class="container d-flex flex-column align-items-center w-25 text-center">
+                <label class="text-white font-weight-bold">Bots</label>
+                <select id='selectBots' class="form-control w-50">
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+            </div>
+            <button class="btn btn-success" id='startButton'>START</button> 
+            <button class="btn btn-success" id='resetButton'>RESET</button> 
+        </header>
+        
+        <div class="playerWindow">
+            <div id='dealerContainer' class="container d-flex justify-content-center">
+
+            </div>
+        </div>
+    </div>
+
+
+    <script type="module" src="index.js"></script>
+</body>
+</html>
