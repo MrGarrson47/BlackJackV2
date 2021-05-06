@@ -35,7 +35,7 @@ export class Dealer extends Player {
     addDotToThinkingMessage() {
         this.message.innerHTML += ' .';
         if (this.message.innerHTML.length > 19) {
-            this.message.innerHTML = "Still thinking"
+            this.message.innerHTML = "Still thinking";
         }
     }
 

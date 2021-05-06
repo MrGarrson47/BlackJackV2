@@ -73,6 +73,7 @@ export class Human extends Player {
         if (this.getValueOfHand() > 21) {
             this.hitButton.disabled = true;
             this.standButton.disabled = true;
+            this.hasHadTurn = true;
             GameMaster.giveAPlayerATurn();
         }
     }
@@ -106,6 +107,7 @@ export class Human extends Player {
     stand() {
         this.hitButton.disabled = true;
         this.standButton.disabled = true;
+        this.hasHadTurn = true;
         GameMaster.giveAPlayerATurn();
     }
 

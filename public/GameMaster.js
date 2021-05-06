@@ -1,3 +1,4 @@
+import { Bot } from "./Bot.js";
 import { Dealer } from "./Dealer.js";
 import { Human } from "./Human.js";
 
@@ -10,7 +11,7 @@ export class GameMaster {
     static createPlayers(amountOfBots) {
         this.players = [new Human('MrGarrison47', 1000)];
         for (let i = 0; i < amountOfBots; i++) {
-            this.players = [...this.players, new Human(`p${i}`, 1000)];
+            this.players = [...this.players, new Bot()];
         }
         this.players = [...this.players, new Dealer()];
     }
