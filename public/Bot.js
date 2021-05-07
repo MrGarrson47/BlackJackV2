@@ -1,28 +1,30 @@
 import { GameMaster } from "./GameMaster.js";
 import { Player } from "./Player.js";
 
-export class Bot extends Player{
+export class Bot extends Player {
 
     static botId;
 
-    constructor(){
+    constructor(riskLevel) {
         super();
+
+        this.riskLevel = riskLevel;
 
         //add class to cardsDivForThisPlayer
         this.cardsDivForThisPlayer.classList.add('#botCards');
 
-         //create heading element to place 'thinking . . .' message
-         this.message = document.createElement('h3');
-         this.message.innerHTML = "I am thinking";
-         this.message.style.opacity = 0;
+        //create heading element to place 'thinking . . .' message
+        this.message = document.createElement('h3');
+        this.message.innerHTML = "I am thinking";
+        this.message.style.opacity = 0;
 
-         //put element in right place
-         this.cardsDivForThisPlayer.appendChild(this.message);
+        //put element in right place
+        this.cardsDivForThisPlayer.appendChild(this.message);
 
     }
 
     //add a card to the player's hand, remove card from deck, check if player is now bust
-    hit(){
+    hit() {
 
         this.randomCardIndex = this.returnRandomCardIndex();
 
@@ -39,15 +41,15 @@ export class Bot extends Player{
     }
 
     //return parsed object from arrayOfCards in localStorage
-    getParsedArrayOfCards(){
+    getParsedArrayOfCards() {
         return JSON.parse(localStorage.getItem("arrayOfCards"));
     }
 
-    addCardToHandArray(randomCardIndex){
+    addCardToHandArray(randomCardIndex) {
         this.hand = [...this.hand, this.getParsedArrayOfCards()[randomCardIndex]];
     }
 
-    createImageElement(randomCardIndex){
+    createImageElement(randomCardIndex) {
         this.imageElement = document.createElement('img');
         this.imageElement.classList.add('cardImage');
         this.imageElement.src = this.getParsedArrayOfCards()[randomCardIndex].src;
@@ -55,30 +57,30 @@ export class Bot extends Player{
 
     }
 
-    removeCardFromArrayOfCards(randomCardIndex){
+    removeCardFromArrayOfCards(randomCardIndex) {
         this.arrayOfCards = this.getParsedArrayOfCards();
         this.arrayOfCards.splice(randomCardIndex, 1);
         localStorage.setItem('arrayOfCards', JSON.stringify(this.arrayOfCards));
     }
 
-    isPlayerbust(){
-        if(this.getPlayerHand() > 21){
+    isPlayerbust() {
+        if (this.getPlayerHand() > 21) {
             this.hasHadTurn = true;
             GameMaster.giveAPlayerATurn();
         }
     }
 
-    getPlayerHand(){
+    getPlayerHand() {
         this.valueOfHand = 0;
-        this.hand.forEach(card=>{
+        this.hand.forEach(card => {
             this.valueOfHand += card.value;
         })
         return this.valueOfHand;
     }
 
-    startTurn(){
+    startTurn() {
         this.displayThinkingMessage();
-        this.hitIfBotHandValueIsLessThan15();
+        this.shouldBotHit();
     }
 
     displayThinkingMessage() {
@@ -94,22 +96,41 @@ export class Bot extends Player{
         }
     }
 
-    hitIfBotHandValueIsLessThan15(){
+    getChanceOfDrawingABustingCard() {
+        this.chanceOfDrawingABustingCard = 0;
+        this.getParsedArrayOfCards().forEach(card => {
+            if (card.value >= this.getValueOfBustingCard()) {
+                this.chanceOfDrawingABustingCard += this.getChanceOfDrawingAnyCard();
+            }
+        })
+        return this.chanceOfDrawingABustingCard;
+    }
 
-        setTimeout(()=>{
+    getValueOfBustingCard() {
+        return 22 - this.getPlayerHand();
+    }
 
-            if(this.getPlayerHand() >= 15){
-                this.hasHadTurn = true;
-                clearInterval(this.intervalToAddDotToThinkingMessage);
-                this.message.style.opacity = 0;
-                GameMaster.giveAPlayerATurn();
+    getChanceOfDrawingAnyCard() {
+        return 100 / this.getParsedArrayOfCards().length;
+    }
+
+    shouldBotHit() {
+        setTimeout(() => {
+            if (this.getChanceOfDrawingABustingCard() > this.riskLevel) {
+                this.endTurn();
                 return;
             }
             this.hit();
-            this.hitIfBotHandValueIsLessThan15();
+            this.shouldBotHit();
+        }, 2000)
 
-        },2000)
+    }
 
+    endTurn() {
+        this.hasHadTurn = true;
+        clearInterval(this.intervalToAddDotToThinkingMessage);
+        this.message.style.opacity = 0;
+        GameMaster.giveAPlayerATurn();
     }
 
     //remove html elements

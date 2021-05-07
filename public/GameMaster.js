@@ -11,7 +11,7 @@ export class GameMaster {
     static createPlayers(amountOfBots) {
         this.players = [new Human('MrGarrison47', 1000)];
         for (let i = 0; i < amountOfBots; i++) {
-            this.players = [...this.players, new Bot()];
+            this.players = [...this.players, new Bot(50 + i * 10)];
         }
         this.players = [...this.players, new Dealer()];
     }
