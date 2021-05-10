@@ -5,6 +5,10 @@ export class Dealer extends Player {
 
     constructor() {
         super();
+
+        //create messageDiv element
+        this.messageDiv = document.createElement('div');
+
         //create heading element to place 'thinking . . .' message
         this.message = document.createElement('h3');
         this.message.innerHTML = "I am thinking";
@@ -16,8 +20,9 @@ export class Dealer extends Player {
 
         //put element in right place
         this.dealerContainer.appendChild(this.divForThisPlayer);
-        this.cardsDivForThisPlayer.appendChild(this.buttonsDivForThisPlayer);
-        this.buttonsDivForThisPlayer.appendChild(this.message);
+        this.divForThisPlayer.appendChild(this.messageDiv);
+        this.messageDiv.appendChild(this.message);
+       
     }
 
 
@@ -108,6 +113,7 @@ export class Dealer extends Player {
         this.images = document.querySelectorAll('.cardImage');
         this.images.forEach(image => { image.remove() });
         this.message.remove();
+        this.removeDivElements();
     }
 
 

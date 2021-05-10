@@ -10,6 +10,7 @@ export class Human extends Player {
         this.bet;
 
         //create the button elements
+        this.buttonsDivForThisPlayer = document.createElement('div');
         this.hitButton = document.createElement('button');
         this.hitButton.innerText = 'HIT';
         this.standButton = document.createElement('button');
@@ -124,6 +125,7 @@ export class Human extends Player {
         this.images.forEach(image => { image.remove() });
         this.hitButton.remove();
         this.standButton.remove();
+        this.removeDivElements();
     }
 
 

@@ -12,6 +12,9 @@ export class Bot extends Player {
 
         //add class to cardsDivForThisPlayer
         this.cardsDivForThisPlayer.classList.add('#botCards');
+        
+        //create messageDiv element
+        this.messageDiv = document.createElement('div');
 
         //create heading element to place 'thinking . . .' message
         this.message = document.createElement('h3');
@@ -19,7 +22,9 @@ export class Bot extends Player {
         this.message.style.opacity = 0;
 
         //put element in right place
-        this.cardsDivForThisPlayer.appendChild(this.message);
+        this.divForThisPlayer.appendChild(this.cardsDivForThisPlayer);
+        this.cardsDivForThisPlayer.appendChild(this.messageDiv);
+        this.messageDiv.appendChild(this.message);
 
     }
 
@@ -137,6 +142,7 @@ export class Bot extends Player {
     removeElements() {
         this.images = document.querySelectorAll('.cardImage');
         this.images.forEach(image => { image.remove() });
+        this.removeDivElements();
     }
 
 

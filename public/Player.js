@@ -14,11 +14,15 @@ export class Player {
         this.playerWindow = document.querySelector('.playerWindow');
         this.divForThisPlayer = document.createElement('div');
         this.cardsDivForThisPlayer = document.createElement('div');
-        this.buttonsDivForThisPlayer = document.createElement('div');
 
         //put the elements in the right place
         this.playerWindow.appendChild(this.divForThisPlayer);
         this.divForThisPlayer.appendChild(this.cardsDivForThisPlayer);
+    }
+
+    removeDivElements(){
+        this.divForThisPlayer.remove();
+        this.cardsDivForThisPlayer.remove();
     }
 
     
