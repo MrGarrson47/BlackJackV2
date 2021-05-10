@@ -116,6 +116,7 @@ export class Bot extends Player{
     removeElements() {
         this.images = document.querySelectorAll('.cardImage');
         this.images.forEach(image => { image.remove() });
+        this.removeDivElements();
     }
 
 

@@ -10,6 +10,7 @@ export class Human extends Player {
         this.bet;
 
         //create the button elements
+        this.buttonsDivForThisPlayer = document.createElement('div');
         this.hitButton = document.createElement('button');
         this.hitButton.innerText = 'HIT';
         this.standButton = document.createElement('button');
@@ -26,10 +27,6 @@ export class Human extends Player {
         //assign click events to the buttons
         this.hitButton.addEventListener('click', () => { this.hit() });
         this.standButton.addEventListener('click', () => { this.stand() });
-
-        //disable the buttons until it is this player's turn
-        this.hitButton.disabled = true;
-        this.standButton.disabled = true;
     }
 
     //add a card to the player's hand, remove card from deck, check if player is now bust
@@ -124,6 +121,7 @@ export class Human extends Player {
         this.images.forEach(image => { image.remove() });
         this.hitButton.remove();
         this.standButton.remove();
+        this.removeDivElements();
     }
 
 
