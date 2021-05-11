@@ -1,5 +1,7 @@
 import { GameMaster } from './GameMaster.js';
-import { ArrayOfCards} from './ArrayOfCards.js';
+import { getArrayOfCards} from './ArrayOfCards.js';
+
+let ArrayOfCards = getArrayOfCards();
 
 localStorage.setItem('arrayOfCards', JSON.stringify(ArrayOfCards) );
 
