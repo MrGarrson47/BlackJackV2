@@ -1,4 +1,6 @@
-
+#botRow {
+    max-height: 20vh;
+}
 
 @keyframes firstCard{
     0%{transform: translateX(100%);}  
@@ -37,38 +39,128 @@
     100%{transform: translateX(-320%);}
 }
 
-.dealerCards img:nth-of-type(1), .humanCards img:nth-of-type(1){   
+@keyframes cardSlide{
+    0%{transform: translateX(100%);}   
+    100%{transform: translateX(0%);}
+}
+
+@keyframes cardSlideAndMoveLeft{
+    0%{ transform: translateX(100%);}   
+    100%{ transform: translateX(-40%);}
+}
+
+@keyframes cardSlideAndMoveLeftAndUp{
+    0%{ transform: translate(100%,0);}   
+    100%{ transform: translate(-40%,-75%);}
+}
+
+@keyframes cardSlideAndMoveUp{
+    0%{ transform: translate(100%,0);}   
+    100%{ transform: translate(0,-75%);}
+}
+
+@keyframes cardSlideAndMoveUpSixth{
+    0%{ transform: translate(100%,0);}   
+    100%{ transform: translate(0,-150%);}
+}
+
+@keyframes cardSlideAndMoveUpEighth{
+    0%{ transform: translate(100%,0);}   
+    100%{ transform: translate(0,-225%);}
+}
+
+@keyframes cardSlideAndMoveUpTenth{
+    0%{ transform: translate(100%,0);}   
+    100%{ transform: translate(0,-300%);}
+}
+
+@keyframes cardSlideAndMoveUpFifth{
+    0%{ transform: translate(100%,0);}   
+    100%{ transform: translate(0,-150%);}
+}
+
+@keyframes cardSlideAndMoveUpSeventh{
+    0%{ transform: translate(100%,0);}   
+    100%{ transform: translate(0,-225%);}
+}
+
+@keyframes cardSlideAndMoveUpNinth{
+    0%{ transform: translate(100%,0);}   
+    100%{ transform: translate(0,-300%);}
+}
+
+.cards img:nth-of-type(1) {
+    animation: cardSlide 1s   1 forwards ;
+}
+
+.cards img:nth-of-type(2) {
+    animation: cardSlideAndMoveLeft 1s   1 forwards ;
+}
+
+.cards img:nth-of-type(3){
+    animation: cardSlideAndMoveUp 1s   1 forwards ;
+}
+
+.cards img:nth-of-type(4){
+    animation: cardSlideAndMoveLeftAndUp 1s 1 forwards;
+}
+
+.cards img:nth-of-type(5){
+    animation: cardSlideAndMoveUpFifth 1s   1 forwards ;
+}
+
+.cards img:nth-of-type(6){
+    animation: cardSlideAndMoveLeftAndUpSixth 1s   1 forwards ;
+}
+
+.cards img:nth-of-type(7){
+    animation: cardSlideAndMoveUpSeventh 1s   1 forwards ;
+}
+
+.cards img:nth-of-type(8){
+    animation: cardSlideAndMoveLeftAndUpEighth 1s   1 forwards ;
+}
+
+.cards img:nth-of-type(9){
+    animation: cardSlideAndMoveUpNinth 1s   1 forwards ;
+}
+
+.cards img:nth-of-type(10){
+    animation: cardSlideAndMoveLeftAndUpTenth 1s   1 forwards ;
+}
+
+.dealerCards img:nth-of-type(1){   
     animation: firstCard 1s   1 forwards ;
 }
 
-.dealerCards img:nth-of-type(2), .humanCards img:nth-of-type(2){   
+.dealerCards img:nth-of-type(2){   
     animation: secondCard 1s   1 forwards ;
 }
 
-.dealerCards img:nth-of-type(3), .humanCards img:nth-of-type(3){
+.dealerCards img:nth-of-type(3){
     animation: thirdCard 1s   1 forwards ;
 }
 
-.dealerCards img:nth-of-type(4), .humanCards img:nth-of-type(4){
+.dealerCards img:nth-of-type(4){
     animation: fourthCard 1s   1 forwards ;
 }
 
-.dealerCards img:nth-of-type(5), .humanCards img:nth-of-type(5){
+.dealerCards img:nth-of-type(5){
     animation: fifthCard 1s   1 forwards ;
 }
 
-.dealerCards img:nth-of-type(6), .humanCards img:nth-of-type(6){
+.dealerCards img:nth-of-type(6){
     animation: sixthCard 1s   1 forwards ;
 }
 
-.dealerCards img:nth-of-type(7), .humanCards img:nth-of-type(7){
+.dealerCards img:nth-of-type(7){
     animation: seventhCard 1s   1 forwards ;
 }
 
-.dealerCards img:nth-of-type(8), .humanCards img:nth-of-type(8){
+.dealerCards img:nth-of-type(8){
     animation: eighthCard 1s   1 forwards ;
 }
 
-.dealerCards img:nth-of-type(9), .humanCards img:nth-of-type(9){
+.dealerCards img:nth-of-type(9){
     animation: ninethCard 1s   1 forwards ;
 }

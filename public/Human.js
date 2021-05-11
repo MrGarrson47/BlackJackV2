@@ -9,6 +9,9 @@ export class Human extends Player {
         this.cash = cash;
         this.bet;
 
+        //get player2Div element
+        this.player2Div = document.querySelector('#humanCol');
+
         //create the button elements
         this.buttonsDivForThisPlayer = document.createElement('div');
         this.hitButton = document.createElement('button');
@@ -16,11 +19,9 @@ export class Human extends Player {
         this.standButton = document.createElement('button');
         this.standButton.innerText = 'STAND';
 
-        //add class to cardsDivForThisPlayer
-        this.cardsDivForThisPlayer.classList.add('humanCards');
 
         //put the elements in the right place
-        this.divForThisPlayer.appendChild(this.buttonsDivForThisPlayer);
+        this.player2Div.appendChild(this.buttonsDivForThisPlayer);
         this.buttonsDivForThisPlayer.appendChild(this.hitButton);
         this.buttonsDivForThisPlayer.appendChild(this.standButton);
 
@@ -58,7 +59,7 @@ export class Human extends Player {
         this.imageElement = document.createElement('img');
         this.imageElement.classList.add('cardImage');
         this.imageElement.src = this.getParsedArrayOfCards()[randomCardIndex].src;
-        this.cardsDivForThisPlayer.appendChild(this.imageElement);
+        this.player2Div.appendChild(this.imageElement);
     }
 
     //splice an index from the arrayOfCards

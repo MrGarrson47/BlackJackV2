@@ -5,13 +5,13 @@ export class Bot extends Player {
 
     static botId;
 
-    constructor(riskLevel) {
+    constructor(riskLevel, botColoumn) {
         super();
 
         this.riskLevel = riskLevel;
 
-        //add class to cardsDivForThisPlayer
-        this.cardsDivForThisPlayer.classList.add('#botCards');
+        //get div element for bot's area
+        this.botDiv = document.querySelector(`#${botColoumn}`);
         
         //create messageDiv element
         this.messageDiv = document.createElement('div');
@@ -22,7 +22,7 @@ export class Bot extends Player {
         this.message.style.opacity = 0;
 
         //put element in right place
-        this.divForThisPlayer.appendChild(this.cardsDivForThisPlayer);
+        this.botDiv.appendChild(this.cardsDivForThisPlayer);
         this.cardsDivForThisPlayer.appendChild(this.messageDiv);
         this.messageDiv.appendChild(this.message);
 
@@ -58,7 +58,7 @@ export class Bot extends Player {
         this.imageElement = document.createElement('img');
         this.imageElement.classList.add('cardImage');
         this.imageElement.src = this.getParsedArrayOfCards()[randomCardIndex].src;
-        this.cardsDivForThisPlayer.appendChild(this.imageElement);
+        this.botDiv.appendChild(this.imageElement);
 
     }
 
