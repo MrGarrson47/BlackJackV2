@@ -28,7 +28,25 @@ export class Dealer extends Player {
 
     startTurn() {
         this.displayThinkingMessage();
-        this.hitIfDealerIsBelow17();
+        if(this.activePlayers()){
+            this.hitIfDealerIsBelow17();
+        }
+        else{
+            this.endTurn();
+        }
+    }
+
+    activePlayers(){
+        this.anyActivePlayers = false;
+        for(let i = 0; i < GameMaster.players.length -1; i++){
+           if(GameMaster.players[i].valueOfHand < 22){
+               //console.log(`player${i} hand: ${GameMaster.players[i].valueOfHand}`)
+               this.anyActivePlayers = true;
+               break;
+           }
+            
+        }
+        return this.anyActivePlayers;
     }
 
     displayThinkingMessage() {
@@ -47,13 +65,18 @@ export class Dealer extends Player {
     hitIfDealerIsBelow17() {
         setTimeout(() => {
             if (this.getValueOfHand() >= 17) {
-                this.message.style.opacity = 0;
-                clearInterval(this.intervalToAddDotToThinkingMessage);
+               this.endTurn();
                 return;
             }
             this.hit();
             this.hitIfDealerIsBelow17();
         }, 2000)
+    }
+
+    endTurn() {
+        this.hasHadTurn = true;
+        clearInterval(this.intervalToAddDotToThinkingMessage);
+        this.message.style.opacity = 0;
     }
 
     hit() {

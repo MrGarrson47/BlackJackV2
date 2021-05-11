@@ -69,13 +69,13 @@ export class Bot extends Player {
     }
 
     isPlayerbust() {
-        if (this.getPlayerHand() > 21) {
+        if (this.getValueOfHand() > 21) {
             this.hasHadTurn = true;
             GameMaster.giveAPlayerATurn();
         }
     }
 
-    getPlayerHand() {
+    getValueOfHand() {
         this.valueOfHand = 0;
         this.hand.forEach(card => {
             this.valueOfHand += card.value;
@@ -112,7 +112,7 @@ export class Bot extends Player {
     }
 
     getValueOfBustingCard() {
-        return 22 - this.getPlayerHand();
+        return 22 - this.getValueOfHand();
     }
 
     getChanceOfDrawingAnyCard() {
